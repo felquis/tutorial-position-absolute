@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial Position Absolute</title>
+
+    <style>
+      .conteudo {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: aquamarine;
+      }
+
+      .minha-div {
+        --height: 0px;
+        --width: 0px;
+
+        height: var(--height);
+        width: var(--width);
+
+        background-color: color-mix(in srgb, green 90%, white 50%);
+
+        border-radius: 100%;
+        font-size: 2rem;
+        font-weight: bold;
+        display: grid;
+        place-content: center center;
+        color: transparent;
+
+        position: absolute;
+        top: calc(100dvh / 2);
+        left: calc(100dvw / 2);
+        transform: translate(-50%, -50%);
+      }
+
+      .input:user-valid ~ .minha-div {
+        animation-name: movimento;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+      }
+
+      @keyframes movimento {
+        0% {
+          opacity: 0;
+          color: transparent;
+        }
+
+        50% {
+          color: transparent;
+        }
+
+        100% {
+          color: white;
+          opacity: 1;
+          width: 100dvw;
+          height: 100dvh;
+          border-radius: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="conteudo">
+      <h1>conteúdo da página</h1>
+      <p>este é um paragrafo</p>
+      <form action="">
+        <label for="">formulário teste</label>
+        <input
+          type="text"
+          placeholder="email"
+          type="email"
+          class="input"
+          required
+        />
+        <div class="minha-div">Sucesso!</div>
+        <button type="button">clicar para testar</button>
+      </form>
+    </main>
+  </body>
+</html>
